@@ -7,14 +7,6 @@
 1. Nodejs 설치 [Download Pages](https://nodejs.org/en/download/)(마우스 오른쪽 버튼 > 새 탭에서 링크 열기)
 2. Visual Studio Code 설치 [Download Pages](https://code.visualstudio.com/download)(마우스 오른쪽 버튼 > 새 탭에서 링크 열기)
 3. Chrome 브라우저 설치 [Download Pages](https://www.google.com/chrome)(마우스 오른쪽 버튼 > 새 탭에서 링크 열기)
-4. MongoDB
-  * 설치
-    - [Download Pages](https://www.mongodb.com/try/download/community)(마우스 오른쪽 버튼 > 새 탭에서 링크 열기)
-    - 설치 단계중 Choose Setup Type에서 Custom 선택
-    - Browse 버튼 눌러서 Folder name을 C:\MongoDB로 수정
-  * c:\MongoDB\data 폴더 생성
-  * 구동
-    - C:\MongoDB\bin\mongod --dbpath C:\MongoDB\data
 
 ### Visual Studio Code 설정
 1. VSCode 실행
@@ -50,41 +42,4 @@
 2. Share Code Now 클릭
 3. 본인의 코드 복사
 4. 브라우저의 주소창의 URL 복사 후 채팅창에 붙여넣기
-
-
-# 2일차
-## 소스코드 다운로드
-* day2.zip
-* [Download Pages](https://github.com/uzoolove/nodejs202101/blob/master/sample/day2.zip)(마우스 오른쪽 버튼 > 새 탭에서 링크 열기) 이동 후 Download 버튼 클릭
-* 다운로드 받은 파일을 C 드라이브 nodejs 폴더에 압축 해제(기존 파일 덮어쓰기)
-  * C:\nodejs\global
-  * C:\nodejs\modules
-  * C:\nodejs\server
-
-# 3일차
-## 소스코드 다운로드
-* day3.zip
-* [Download Pages](https://github.com/uzoolove/nodejs202101/blob/master/sample/day3.zip)(마우스 오른쪽 버튼 > 새 탭에서 링크 열기) 이동 후 Download 버튼 클릭
-* 다운로드 받은 파일을 C 드라이브 nodejs 폴더에 압축 해제(기존 파일 덮어쓰기)
-  * C:\nodejs\chat
-  * C:\nodejs\http
-
-# 4일차
-## 소스코드 다운로드
-* day4.zip
-* [Download Pages](https://github.com/uzoolove/nodejs202101/blob/master/sample/day4.zip)(마우스 오른쪽 버튼 > 새 탭에서 링크 열기) 이동 후 Download 버튼 클릭
-* 다운로드 받은 파일을 C 드라이브 nodejs 폴더에 압축 해제(기존 파일 덮어쓰기)
-  * C:\nodejs\board
-
-# 관련 사이트
-## Nodejs
-* https://nodejs.org
-## npm
-* https://npmjs.com
-## Express
-* https://expressjs.com
-## MongoDB
-* https://mongodb.com
-## Electron
-* https://electronjs.org
 
