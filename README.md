@@ -7,14 +7,28 @@
 1. Nodejs 설치 [Download Pages](https://nodejs.org/en/download/)(마우스 오른쪽 버튼 > 새 탭에서 링크 열기)
 2. Visual Studio Code 설치 [Download Pages](https://code.visualstudio.com/download)(마우스 오른쪽 버튼 > 새 탭에서 링크 열기)
 3. Chrome 브라우저 설치 [Download Pages](https://www.google.com/chrome)(마우스 오른쪽 버튼 > 새 탭에서 링크 열기)
+4. MongoDB
+  * 설치
+    - [Download Pages](https://www.mongodb.com/try/download/community)(마우스 오른쪽 버튼 > 새 탭에서 링크 열기)
+    - 설치 단계중 Choose Setup Type에서 Custom 선택
+    - Browse 버튼 눌러서 Folder name을 C:\MongoDB로 수정
+  * c:\MongoDB\data 폴더 생성
+  * 구동
+    - C:\MongoDB\bin\mongod --dbpath C:\MongoDB\data
 
 ### Visual Studio Code 설정
 1. VSCode 실행
 2. Manage > Setting(좌측 하단의 톱니바퀴 모양 아이콘 클릭 후 Settings 메뉴 선택)
-    * Auto Save: onFocusChange
-    * Font Size: 각자 맞춰서 조절
-    * Tab Size: 2
-    * Detect Indentation: 체크 해제
+  * Auto Save: onFocusChange
+  * Font Size: 각자 맞춰서 조절
+  * Tab Size: 2
+  * Detect Indentation: 체크 해제
+3. 터미널 설정
+  * View > Terminal 선택
+  * VSCode 하단에 오픈된 TERMINAL 탭 우측 상단의 1:powershell 선택 후 Select Default Shell 선택
+  * VSCode 상단의 선택상자에서 Command Prompt 선택
+  * TERMINAL 탭 우측 상단의 휴지통 아이콘 선택해서 터미널 종료
+  * View > Terminal 선택 후 오픈된 TERMINAL 탭 우측 상단에 1:cmd로 바뀌었는지 확인
 
 ### 소스코드 다운로드
 * day1.zip
@@ -41,7 +55,7 @@
 # 2일차
 ## 소스코드 다운로드
 * day2.zip
-* [Download Pages](https://github.com/uzoolove/nodejs202010/blob/master/sample/day2.zip)(마우스 오른쪽 버튼 > 새 탭에서 링크 열기) 이동 후 Download 버튼 클릭
+* [Download Pages](https://github.com/uzoolove/nodejs202101/blob/master/sample/day2.zip)(마우스 오른쪽 버튼 > 새 탭에서 링크 열기) 이동 후 Download 버튼 클릭
 * 다운로드 받은 파일을 C 드라이브 nodejs 폴더에 압축 해제(기존 파일 덮어쓰기)
   * C:\nodejs\global
   * C:\nodejs\modules
@@ -50,7 +64,7 @@
 # 3일차
 ## 소스코드 다운로드
 * day3.zip
-* [Download Pages](https://github.com/uzoolove/nodejs202010/blob/master/sample/day3.zip)(마우스 오른쪽 버튼 > 새 탭에서 링크 열기) 이동 후 Download 버튼 클릭
+* [Download Pages](https://github.com/uzoolove/nodejs202101/blob/master/sample/day3.zip)(마우스 오른쪽 버튼 > 새 탭에서 링크 열기) 이동 후 Download 버튼 클릭
 * 다운로드 받은 파일을 C 드라이브 nodejs 폴더에 압축 해제(기존 파일 덮어쓰기)
   * C:\nodejs\chat
   * C:\nodejs\http
@@ -58,18 +72,19 @@
 # 4일차
 ## 소스코드 다운로드
 * day4.zip
-* [Download Pages](https://github.com/uzoolove/nodejs202010/blob/master/sample/day4.zip)(마우스 오른쪽 버튼 > 새 탭에서 링크 열기) 이동 후 Download 버튼 클릭
+* [Download Pages](https://github.com/uzoolove/nodejs202101/blob/master/sample/day4.zip)(마우스 오른쪽 버튼 > 새 탭에서 링크 열기) 이동 후 Download 버튼 클릭
 * 다운로드 받은 파일을 C 드라이브 nodejs 폴더에 압축 해제(기존 파일 덮어쓰기)
   * C:\nodejs\board
 
 # 관련 사이트
 ## Nodejs
 * https://nodejs.org
-## electron
+## npm
+* https://npmjs.com
+## Express
+* https://expressjs.com
+## MongoDB
+* https://mongodb.com
+## Electron
 * https://electronjs.org
-## ECMAScript6 새로운 기능
-* http://es6-features.org/
-## ES6 호환성 테이블
-* http://kangax.github.io/compat-table/es6/
-## 브라우저 점유율
-* https://gs.statcounter.com
+
