@@ -30,3 +30,6 @@ fs.watchFile(file, restart);
 // 'rs' 명렁어를 입력하고 엔터치면 수동으로 재시작한다.
 // 표준입력장치로부터 data가 도착하면(data 이벤트 등록)
 // 전달받은 메세지가 'rs'인지 확인한 후 restart() 호출
+process.stdin.on('data', function(data){
+  if(data.toString().trim() == 'rs') restart();
+});

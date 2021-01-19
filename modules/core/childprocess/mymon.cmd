@@ -1,2 +1,2 @@
 @echo off
-node.exe c:\\nodejs\\modules\\core\\childprocess\\mymon.js %1 %2
+node.exe c:\\nodejs202101\\modules\\core\\childprocess\\mymon.js %1 %2
