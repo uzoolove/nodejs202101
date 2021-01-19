@@ -1,0 +1,20 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "clog": "^0.1.6",
+    "connect": "^2.25.10",
+    "node-static": "^0.7.11",
+    "tracer": "^1.1.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon ./hello/helloserver",
+    "start2": "nodemon ./hello/helloserver2",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
