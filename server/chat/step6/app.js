@@ -21,25 +21,31 @@
  */
 
 const connect = require('connect');
+const logger = require('morgan');
+const static = require('serve-static');
+const session = require('express-session');
+const nocache = require('nocache');
+const ejs = require('ejs');
+
 const fs = require('fs');
 const path = require('path');
-const logger = require('./middleware/logger');
-const static = require('./middleware/static');
 const indexRouter = require('./routes/index');
-
-// function app(req, res){
-//   static(req, res, function(){
-//     logger(req, res);
-//   });
-// }
 
 var app = connect();
 
-app.use(logger({target: 'file', filename: 'chat.log'}));
+app.use(logger('dev'));
 app.use(static(path.join(__dirname, 'public')));
+app.use(session({ // req.session 속성에 세션정보 저장
+  cookie: {maxAge: 1000*30},
+  secret: 'sometext',
+  rolling: true,  // 매 응답마다 쿠키 시간 초기화
+  resave: false,  // 세션값이 수정되지 않으면 서버에 다시 저장하지 않음
+  saveUninitialized: false  // 세션에 아무값도 없으면 클라이언트에 쿠키를 전송하지 않음
+}));
+
+app.use(nocache());
 
 app.use('/', indexRouter);
-
 
 // 404 에러 처리 미들웨어
 app.use(function(req, res, next){

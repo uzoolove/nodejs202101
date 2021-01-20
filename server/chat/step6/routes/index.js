@@ -6,18 +6,19 @@ const views = path.join(__dirname, '..', 'views');
 
 // 채팅 화면으로 이동
 function chat(req, res){
-  // res.writeHead(303, {Location: '/chat.html'});
-  // res.end();
+  var nickname = req.session.nickname;
 
-  // /chat?username=%EA%B9%80%EC%B2%A0%EC%88%98
-  // TODO: session에서 nickname을 꺼낸다.
-  var nickname = url.parse(req.url, true).query.username;
-  var filename = path.join(views, 'chat.html');
-  fs.readFile(filename, function(err, data){
-    res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
-    data = data.toString().replace('<%=nickname%>', nickname);
-    res.end(data);
-  });
+  if(!nickname){
+    res.writeHead(303, {Location: '/'});
+    res.end();
+  }else{
+    var filename = path.join(views, 'chat.html');
+    fs.readFile(filename, function(err, data){
+      res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
+      data = data.toString().replace('<%=nickname%>', nickname);
+      res.end(data);
+    });
+  }
 }
 
 
@@ -26,7 +27,7 @@ function login(req, res){
   var nickname = url.parse(req.url, true).query.username;
   if(nickname && nickname.trim() != ''){
     // TODO: session에 nickname 정보를 저장한다.
-
+    req.session.nickname = nickname;
     res.writeHead(303, {Location: '/chat'});
   }else{
     res.writeHead(303, {Location: '/'});
@@ -37,7 +38,7 @@ function login(req, res){
 // 로그아웃
 function logout(req, res){
   // TODO: session을 삭제한다.
-  
+  req.session.destroy();
   res.writeHead(303, {Location: '/'});
   res.end();
 }
