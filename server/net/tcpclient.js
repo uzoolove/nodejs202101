@@ -1,7 +1,9 @@
 const net = require('net');
 var target = {
-  host: 'localhost',
-  port: 1234
+  // host: 'localhost',
+  // port: 1234
+  host: '15.164.240.38',
+  port: 80  
 };
 
 // 1. 소켓 생성
@@ -16,3 +18,7 @@ socket.connect(target.port, target.host, function(){
   });
 });
 
+// 표준 입력장치로부터 메세지를 읽어서 서버에 전송
+process.stdin.on('data', function(data){
+  socket.write(data);
+});

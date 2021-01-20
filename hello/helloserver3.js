@@ -44,10 +44,11 @@ function myListener(req, res){
   fileStream.on('close', function(){
     res.end();
   });
-  fileStream.on('data', function(data){
-    console.log(data.length);
-    res.write(data);
-  });
+  fileStream.pipe(res);
+  // fileStream.on('data', function(data){
+  //   console.log(data.length);
+  //   res.write(data);
+  // });
 }
 
 // var httpServer = http.createServer(myListener);
