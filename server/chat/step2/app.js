@@ -1,34 +1,22 @@
-// var mime = {
-//   'html': 'text/html',
-//   'svg': 'image/svg+xml',
-//   'jpg': 'image/jpeg',
-//   'png': 'image/png',
-//   'gif': 'image/gif',
-//   'css': 'text/css',
-//   'js': 'application/javascript'
-//   // ......
-// };
-
-// function getMimeType(url){
-//   var extname = path.extname(url).substring(1);
-//   return mime[extname];
-// }
-
-const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const url = require('url');
 const mime = require('mime');
 
 // 로그파일
 var logfile = fs.createWriteStream('log.txt', {flags: 'a'});
 
 function staticServer(req, res){
-  console.log(req.method, req.url, req.httpVersion);
-  console.log(req.headers['user-agent']);
   if(req.url == '/'){
     req.url = '/index.html';
   }
-  var filename = path.join(__dirname, req.url);
+
+  // /chat.html?username=김철수&role=admin
+  // -> {pathname: '/chat.html', query: {username: '김철수', role: 'admin'}}
+  var parseUrl = url.parse(req.url, true);
+  var pathname = parseUrl.pathname;
+
+  var filename = path.join(__dirname, pathname);
   var mimeType = mime.getType(filename); // mime@2
 
   fs.stat(filename, function(err, status){
@@ -50,9 +38,5 @@ function staticServer(req, res){
   });
 }
 
-// 1. http.Server 생성
-var tcpServer = http.createServer(staticServer);
-// 2. 포트 오픈 서버 구동
-tcpServer.listen(80, function(){
-  console.log('HTTP 서버 구동.');
-});
+module.exports = staticServer;
+
