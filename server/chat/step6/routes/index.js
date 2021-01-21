@@ -3,25 +3,24 @@ const fs = require('fs');
 const path = require('path');
 const ejs = require('ejs');
 
-const views = path.join(__dirname, '..', 'views');
-
 // 채팅 화면으로 이동
 function chat(req, res, next){
   var nickname = req.session.nickname;
+  res.render('chat', {title: '채팅방', nickname});
 
   // if(!nickname){
   //   res.writeHead(303, {Location: '/'});
   //   res.end();
   // }else{
-    var filename = path.join(views, 'chat.ejs');
-    ejs.renderFile(filename, {title: '채팅방', nickname}, function(err, data){
-      if(err){
-        next(err);
-      }else{
-        res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
-        res.end(data);
-      }
-    });
+    // var filename = path.join(views, 'chat.ejs');
+    // ejs.renderFile(filename, {title: '채팅방', nickname}, function(err, data){
+    //   if(err){
+    //     next(err);
+    //   }else{
+    //     res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
+    //     res.end(data);
+    //   }
+    // });
     // fs.readFile(filename, function(err, data){
     //   res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
     //   data = data.toString().replace('<%=nickname%>', nickname);

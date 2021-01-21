@@ -45,6 +45,27 @@ app.use(session({ // req.session 속성에 세션정보 저장
 
 app.use(nocache());
 
+
+// ejs를 기본 view engine으로 설정
+app.use(function(req, res, next){
+  const views = path.join(__dirname, 'views');
+  res.locals = {};
+  res.render = function(filename, data){
+    const filepath = path.join(views, filename + '.ejs');
+    data = data || res.locals;
+    ejs.renderFile(filepath, data, function(err, result){
+      if(err){
+        next(err);
+      }else{
+        res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
+        res.end(result);
+      }
+    });
+  };
+  next();
+});
+
+
 app.use('/', indexRouter);
 
 // 404 에러 처리 미들웨어
@@ -52,7 +73,7 @@ app.use(function(req, res, next){
   // connect 미들웨어
   // 1. req, res, next를 인자값으로 받는다.
   // 2. res로 응답을 완료하거나 next를 호출한다.
-  var error = new Error(req.url + '파일을 찾을 수 없습니다.');
+  var error = new Error(req.url + ' 파일을 찾을 수 없습니다.');
   error.status = 404;
   next(error)
 });
@@ -60,14 +81,26 @@ app.use(function(req, res, next){
 // 에러 처리 전용 미들웨어
 app.use(function(error, req, res, next){
   error.status = error.status || 500;
-  var filename = path.join(__dirname, 'views', 'error.html');
-  fs.readFile(filename, function(err, data){
-    res.writeHead(error.status, {'Content-Type': 'text/html;charset=utf-8'});
-    data = data.toString().replace('<%=message%>', error.message)
-                          .replace('<%=error.status%>', error.status)
-                          .replace('<%=error.stack%>', error.stack);
-    res.end(data);
-  });
+  res.locals.message = error.message;
+  res.locals.error = error;
+  res.render('error');
+
+  // var filename = path.join(__dirname, 'views', 'error.ejs');
+  // ejs.renderFile(filename, {message: error.message, error}, function(err, data){
+  //   if(err){
+  //     next(err);
+  //   }else{
+  //     res.writeHead(error.status, {'Content-Type': 'text/html;charset=utf-8'});
+  //     res.end(data);
+  //   }
+  // });
+  // fs.readFile(filename, function(err, data){
+  //   res.writeHead(error.status, {'Content-Type': 'text/html;charset=utf-8'});
+  //   data = data.toString().replace('<%=message%>', error.message)
+  //                         .replace('<%=error.status%>', error.status)
+  //                         .replace('<%=error.stack%>', error.stack);
+  //   res.end(data);
+  // });
 });
 
 module.exports = app;
