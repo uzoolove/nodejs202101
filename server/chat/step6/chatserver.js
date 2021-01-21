@@ -12,5 +12,4 @@ function server(io){
     });
   });
 }
-
 module.exports = server;
