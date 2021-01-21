@@ -28,7 +28,7 @@ router.get('/board/:no', function(req, res, next) {
 });
 
 // 삭제
-router.delete('/board/:no', function(req, res, next) {
+router.post('/board/:no', function(req, res, next) {
   var no = req.params.no;
   res.redirect('/');
 });
