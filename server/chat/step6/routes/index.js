@@ -1,24 +1,33 @@
 const url = require('url');
 const fs = require('fs');
 const path = require('path');
+const ejs = require('ejs');
 
 const views = path.join(__dirname, '..', 'views');
 
 // 채팅 화면으로 이동
-function chat(req, res){
+function chat(req, res, next){
   var nickname = req.session.nickname;
 
-  if(!nickname){
-    res.writeHead(303, {Location: '/'});
-    res.end();
-  }else{
-    var filename = path.join(views, 'chat.html');
-    fs.readFile(filename, function(err, data){
-      res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
-      data = data.toString().replace('<%=nickname%>', nickname);
-      res.end(data);
+  // if(!nickname){
+  //   res.writeHead(303, {Location: '/'});
+  //   res.end();
+  // }else{
+    var filename = path.join(views, 'chat.ejs');
+    ejs.renderFile(filename, {title: '채팅방', nickname}, function(err, data){
+      if(err){
+        next(err);
+      }else{
+        res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
+        res.end(data);
+      }
     });
-  }
+    // fs.readFile(filename, function(err, data){
+    //   res.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
+    //   data = data.toString().replace('<%=nickname%>', nickname);
+    //   res.end(data);
+    // });
+  // }
 }
 
 
@@ -48,7 +57,7 @@ function router(req, res, next){
   var pathname = url.parse(req.url).pathname;
   switch(pathname){
     case '/chat':
-      chat(req, res);
+      chat(req, res, next);
       break;
     case '/login':
       login(req, res);

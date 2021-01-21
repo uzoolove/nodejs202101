@@ -59,6 +59,7 @@ app.use(function(req, res, next){
 
 // 에러 처리 전용 미들웨어
 app.use(function(error, req, res, next){
+  error.status = error.status || 500;
   var filename = path.join(__dirname, 'views', 'error.html');
   fs.readFile(filename, function(err, data){
     res.writeHead(error.status, {'Content-Type': 'text/html;charset=utf-8'});
