@@ -57,8 +57,9 @@ module.exports = {
 	show: function(no, callback){
     // TODO: DB에서 no 게시물을 조회한 후 결과를 콜백으로 전달
     db.board.findOneAndUpdate({_id: no}, {$inc: {view: 1}}, function(err, result){
+      console.log('제목', result.value.title);
       callback(result.value);
-    });    
+    });
 	},
 	// 게시물 등록
 	create: function(article, callback){
