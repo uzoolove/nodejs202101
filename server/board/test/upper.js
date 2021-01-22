@@ -13,7 +13,7 @@ function getUpperCase(word, index, callback){
     var char = word.charAt(index);
     var upperChar = char.toUpperCase();
     callback(upperChar);
-  }, Math.random()*1000);
+  }, Math.random()*1000*5);
 }
 
 module.exports = {

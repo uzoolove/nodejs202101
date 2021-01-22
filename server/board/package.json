@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "db": "c:/mongodb/bin/mongod --dbpath=c:/mongodb/db",
-    "dbshell": "c:/mongodb/bin/mongo boardDB"
+    "dbshell": "c:/mongodb/bin/mongo boardDB",
+    "test": "mocha ./test/test-zombie"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -17,6 +18,10 @@
     "method-override": "^3.0.0",
     "mongodb": "^3.6.3",
     "morgan": "~1.9.1",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "zombie": "^6.1.4"
+  },
+  "devDependencies": {
+    "mocha": "^8.2.1"
   }
 }
