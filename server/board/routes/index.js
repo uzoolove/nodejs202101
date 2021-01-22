@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-var model = require('../models/board');
+// var model = require('../models/board');
+var model = require('../models/board_mysql');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
