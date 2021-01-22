@@ -21,7 +21,12 @@ module.exports = {
 	// 게시물 목록 조회
 	list: function(cb){
 		pool.query(sql.list, function(err, result){
-      cb(result);
+      if(err){
+        console.error(err);
+        cb([]);
+      }else{
+        cb(result);
+      }
     });
 	},
 	// 게시물 상세 조회
